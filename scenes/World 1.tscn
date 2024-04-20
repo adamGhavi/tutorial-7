@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/ObjLamp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Area Trigger.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=4]
+
+[node name="World 1" type="Spatial"]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="Room 1" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00395, 0 )
+use_collision = true
+invert_faces = true
+
+[node name="Room 2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 2, -0.191223, 1.00395, 2.74055 )
+use_collision = true
+invert_faces = true
+
+[node name="Room 3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.191223, 0.395411, 2.74055 )
+use_collision = true
+invert_faces = true
+
+[node name="Room 4" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -1.38284, 1.00395, 6.67216 )
+use_collision = true
+invert_faces = true
+
+[node name="ObjLamp" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.275467, 0.0479546, -0.213284 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 0, -0.304836, 2.12984 )
+use_collision = true
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.3, 0, 0, 0, 0.2, -0.413803, -0.304836, 3.24659 )
+use_collision = true
+
+[node name="Area Trigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.81707 )
+script = ExtResource( 2 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Area Trigger"]
+transform = Transform( 1, 0, 0, 0, 0.0499091, 0, 0, 0, 1, -0.648712, -0.61711, -0.0774231 )
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area Trigger"]
+transform = Transform( 1, 0, 0, 0, 0.05, 0, 0, 0, 1, -0.649, -0.617, -0.077 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Area Trigger" to="Area Trigger" method="_on_Area_Trigger_body_entered"]
