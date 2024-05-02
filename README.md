@@ -4,7 +4,7 @@ For this tutorial I was tasked to create a simple 3D platformer using the Godot 
 2. a switch that controls in-game lighting,
 3. rudimentary 3D models using the () system,
 4. a basic 3D movement and camera system, and
-5. a level-end system
+5. a level-end system.
 
 ## Additional Mechanics
 Besides that, I was also given the opportunity to choose between 2 FPS mechanics to implement into the game:
