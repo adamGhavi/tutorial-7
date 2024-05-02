@@ -2,7 +2,7 @@
 For this tutorial I was tasked to create a simple 3D platformer using the Godot engine. I was able to follow the steps in the tutorial and create:
 1. a simple 3D level,
 2. a switch that controls in-game lighting,
-3. rudimentary 3D models using the () system,
+3. rudimentary 3D models using the CSG system,
 4. a basic 3D movement and camera system, and
 5. a level-end system.
 
